@@ -1,0 +1,115 @@
+/* Galaxy background */
+.galery-container .galaxy-bg {
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.galery-container .galaxy-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.galery-container .galaxy-title {
+    color: #000;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 40px;
+    text-shadow: none;
+    letter-spacing: 2px;
+    animation: none;
+}
+
+.galery-container .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(6px) brightness(1.1);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 #6cf3, 0 1.5px 3px #fff2;
+}
+
+.galery-container .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 36px;
+    margin-top: 40px;
+    justify-items: center;
+}
+
+.galery-container .gallery-item {
+    background: rgba(255,255,255,0.12);
+    border-radius: 20px;
+    box-shadow: 0 4px 32px 0 #6cf3, 0 1.5px 3px #fff2;
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+    backdrop-filter: blur(4px) brightness(1.1);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    position: relative;
+}
+
+.galery-container .gallery-item img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+    box-shadow: 0 2px 16px #6cf2, 0 1px 2px #fff2;
+}
+
+.galery-container .gallery-item:hover {
+    box-shadow: 0 0 60px 16px #6cf, 0 0 32px 10px #fff;
+    transform: translateY(-8px) scale(1.04);
+}
+
+.galery-container .gallery-item:hover img {
+    transform: scale(1.12) rotate(-2deg);
+    box-shadow: 0 0 40px 10px #fff, 0 0 24px 8px #6cf;
+}
+
+/* Simple star animation */
+.galery-container .galaxy-stars:before, .galery-container .galaxy-stars:after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow:
+        100px 200px #fff,
+        300px 400px #6cf,
+        500px 100px #fff,
+        700px 300px #6cf,
+        900px 500px #fff,
+        1200px 100px #6cf,
+        1400px 400px #fff,
+        1600px 200px #6cf;
+    opacity: 0.7;
+    animation: stars-move 12s linear infinite alternate;
+}
+
+@keyframes stars-move {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(30px); }
+}
+
+.galery-container .galaxy-stars:after {
+    left: 50%;
+    top: 50%;
+    box-shadow:
+        50px 100px #fff,
+        150px 200px #6cf,
+        250px 300px #fff,
+        350px 400px #6cf,
+        450px 500px #fff,
+        550px 600px #6cf;
+    opacity: 0.5;
+    animation: stars-move 16s linear infinite alternate-reverse;
+}
